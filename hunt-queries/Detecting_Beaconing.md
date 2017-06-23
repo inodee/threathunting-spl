@@ -37,7 +37,7 @@ index=proxy sourcetype=whatever url=*
 
 | where std<5 AND count>100
 
-| stats count AS AS conn_count, dc(src) AS unique_sources, values(http_method) AS methods,
+| stats count AS conn_count, dc(src) AS unique_sources, values(http_method) AS methods,
         values(http_user_agent) AS agents, values(std) AS diff_deviation, values(category) AS category
         BY url
 ```
