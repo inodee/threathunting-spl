@@ -1,15 +1,15 @@
 # How to detect beaconing traffic with Splunk?
-I've seen people attempting to do that in many ways but mainly around [dataviz](https://pleasefeedthegeek.wordpress.com/2012/12/20/detecting-malware-beacons-using-splunk/), without using a more systematic approach. Besides the dashboard appeal, another reason for that lies in the fact users do not leverage or simply aren't aware about the power of `eventstats` and `streamstats` commands, sticking to `stats`command only.
+I've seen people attempting to do that in many ways but mainly around [dataviz](https://pleasefeedthegeek.wordpress.com/2012/12/20/detecting-malware-beacons-using-splunk/), without using a more systematic approach. Besides the dashboard appeal, another reason for that lies in the fact users do not leverage or simply aren't aware about the power of `eventstats` and `streamstats` commands, sticking to `stats` command only.
 
 Here the approach basically combines all those commands plus plain, simple standard deviation formula to detect variance in the time differences within multiple similar consecutive connections.
 
 ## The scenario
-Assuming you are collecting proxy events (Squid, Bluecoat, IronPort, etc), one simple idea is to check the difference between similar connections established at different times. For that you may pick two entities from a connection, say *source host* and *URL*, and them calculate the delta (*_time*) between those connections.
+Assuming you are collecting proxy events (Squid, Bluecoat, IronPort, etc), one simple idea is to check the difference between similar connections established at different times. For that you may pick two attributes from a connection, say *source host* and *URL*, and them calculate the delta (*_time*) between those connections.
 
-For proxy events that are categorized (News, Search Engines, Sports, Adult, etc), you may even filter (in/out) what is more relevant or applicable to you or your environment. In case of firewall logs, the same applies but you may need to add extra entities to analize the flows (e.: source host, destination host and destination port).
+For proxy events that are categorized (News, Search Engines, Sports, Adult, etc), you may even filter (in/out) what is more relevant or applicable to your environment. In case of firewall logs, the same applies but you may need to add extra attributes to analize the flows (ex.: source host, destination host and destination port).
 
 ### The recipe
-Basically, assuming the last 24 hours as an example, the following instructions are being executed via SPL code:
+Basically, assuming the last 24 hours as an example, the following instructions are executed via SPL:
 
 1. Retrieve proxy events containing a non-null URL;
 2. Sort them by time (epoch);
@@ -19,7 +19,7 @@ Basically, assuming the last 24 hours as an example, the following instructions 
     1. the number of events matched (count);
     2. the standard deviation of the time differences between consecutive events;
 5. Filter in only those rows where the standard deviation is below 5 and with count greater than 100 (thresholds may be adusted);
-6. Finally, group every relevant entity/field by URL, incluing the count of unique source hosts and start checking the list.
+6. Finally, group every relevant attribute/field by URL, incluing the count of unique source hosts and start checking the output.
 
 #### SPL query prototype
 ```
@@ -44,6 +44,6 @@ index=proxy sourcetype=whatever url=*
 ## Triage / Analysis
 The closer the deviation is to zero, the higher the chances of the connections being related to a process executed in a very regular interval, which is one of main characteristics of beaconing traffic.
 
-As expected, most automated processes are detected via this method (AV updates, legitimate agents, etc) so if you proxy offers categorization it's easier to spot the context around the accessed URL. However, that does not mean Google or any other frequently accessed resource should be filtered out as bad guys are also leveraging that as a covert channel.
+As expected, most automated processes are detected via this method (AV updates, legitimate agents, etc) so if your proxy offers categorization it's easier to spot the context around the accessed URL. However, that does not mean Google or any other frequently accessed resource should be filtered out as bad guys are also leveraging that as a covert channel.
 
 High number of connections with low values for deviation, combined with low number of sources (targets) is a good starting point. Later *bytes_out* or any other relevant field can be added to provide better context for analysis.
