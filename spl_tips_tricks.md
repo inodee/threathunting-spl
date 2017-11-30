@@ -21,7 +21,7 @@ For instance, I typically build some sample data (without touching the indexers)
 **Reference**: http://docs.splunk.com/Documentation/Splunk/7.0.0/SearchReference/Makeresults
 
 ## **How to correlate parent/child processes from 4688 Eventlog**
-Unlike *sysmon*, Windows hosts before 10/2016 versions do not provide the parent process name but the process ID only within event 4688 (New Process Created) contents - which is an important piece for threat hunting. Therefore, you need to do some correlation in order to address that.
+[Unlike *sysmon*](#a2), Windows hosts before 10/2016 versions do not provide the parent process name but the process ID only within event 4688 (New Process Created) contents - which is an important piece for threat hunting. Therefore, you need to do some correlation in order to address that.
 
 There are many ways to do it (supporting lookups, summary index, etc), but here's one approach leveraging `streamstats` command assuming you are interestd in child processes being spawned within 60 seconds after the parent instance which is far from 100% coverage but already reveals many interesting scenarios. To increase/decrease this time span, simple tweak the *time_window* parameter below:
 ```
