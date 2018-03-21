@@ -3,6 +3,8 @@ Well, to begin with, attackers may try to disguise their processes with names ve
 
 In case of Windows, take *svchost.exe* as an example. Process names like *msvchost.exe* or *svch0st.exe* may be overlooked during a quick analysis. Besides that, typos, half-baked code or any negligence from an attacker may lead to this scenario, hence the need to monitor for it given the cost (of implementing) and the benefit (of spotting) it.
 
+There are some very interesting articles on that behavior posted by [@Hexacorn](https://twitter.com/Hexacorn). Check [here](http://www.hexacorn.com/blog/2013/07/04/the-typographical-and-homomorphic-abuse-of-svchost-exe/) and [here](http://www.hexacorn.com/blog/2015/12/18/the-typographical-and-homomorphic-abuse-of-svchost-exe-and-other-popular-file-names/).
+
 ## How to do that with Splunk?
 There are many ways to do it (Clustering/ML?), but here we simply make use an implementation of [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance).
 
