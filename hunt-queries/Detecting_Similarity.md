@@ -21,9 +21,11 @@ Install TA-fuzzy and quickly find similar emails given a confirmed malicious one
 The lookup table `unique_processes.csv` referenced below contains a list of file names (absolute path) originating from eventlogs (event ID 4688), the very same can be achieved with `sysmon` or any other data source generating process names (AV, EDRs, etc).
 
 ## Fuzzy Search for Splunk (App)
-Thanks to a guy called John Landers, below you can find the app that leverages a python library ([fuzzywuzzy](https://github.com/seatgeek/fuzzywuzzy)) that implements the concept:
+Thanks to a guy called John Landers, below you can find the app that leverages a python library ([fuzzywuzzy](https://github.com/seatgeek/fuzzywuzzy)) implementing the concept:
 
 [https://splunkbase.splunk.com/app/3109/](https://splunkbase.splunk.com/app/3109/)
+
+After installation, it provides a command called `fuzzy`.
 
 ### SPL query prototype
 ```
