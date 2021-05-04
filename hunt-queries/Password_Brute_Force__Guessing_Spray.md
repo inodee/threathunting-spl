@@ -37,6 +37,11 @@ The _action_ (or _vendor_action_) value determines if an authentication is succe
 | eval failure_time=if(match(action, "(?i)fail"), _time, null()) ``` matches *fail* case-insensitive ```
 | eval success_time=if(match(action, "(?i)(success|pass)"), _time, null()) ``` flag a successful auth ```
 ```
+In the end, the `origin` and `target` fields can be later reverted back to their original field names keeping the normalization/schema:
+```sql
+| rename origin AS src, target AS user
+```
+
 ### Customization & Thresholds
 The `outer_tspan` parameter defines the timespan in which non-Vanilla BF (slower) attacks are detected:
 ```sql
