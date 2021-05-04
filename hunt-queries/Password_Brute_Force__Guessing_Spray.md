@@ -6,14 +6,14 @@
 
 This is a companion blog post to the [Splunk BSides 2021](https://usergroups.splunk.com/events/details/splunk-bsides-splunk-2021-community-presents-bsides-splunk-2021/) presenttion *"The ultimate Authentication Brute-Force detection using super stats"* delivered on May 4th. Slides and Recording are available below:
 
-`<REDACTED UNTIL CONF IS OVER>`
+`<AVAILABLE SOON>`
 
 ## Changelog
 What has changed since the presentation/recording time, after getting feedback and applying some devel improvements?
 
 1. Added a clear list of **successful** targets (accounts) to the _**reason**_ field, where the attack is described in details.
 2. Introduced _**outer_tspan**_ field. This way, the faster Vanilla BF attack threshold (# of attempts) is calculated within a smaller, configurable timespan (_**tspan**_), while the other slower attacks (Mass BF, Password Spray and Targeted BF) have their thresholds calculated over a longer, also configurable timespan.
-3. For Vanilla and Password Spray attacks, besides regular thresholds, a new constraint was added to the attack condition: _**successful_rate < 0.33**_. This filters out most cases where multiple accounts authenticate via the same gateway or jump host (Password Spray), and when the number of successful attempts is too high compared to total events, which does not consititute a BF atack scenario, assuming most attempts actually will fail.
+3. For Vanilla and Password Spray attacks, besides regular thresholds, a new constraint was added to the attack condition: _**successful_rate < 0.33**_. This filters out most cases where multiple accounts authenticate via the same gateway or jump host (Password Spray), and when the number of successful attempts is too high compared to total events, which does not consititute a BF atack scenario, assuming most attempts will actually fail.
 
 ## Usage
 First thing to do is making sure the following attributes (fields) are properly extracted from your data source (events):
