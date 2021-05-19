@@ -6,7 +6,8 @@
 
 This is a companion blog post to the [Splunk BSides 2021](https://usergroups.splunk.com/events/details/splunk-bsides-splunk-2021-community-presents-bsides-splunk-2021/) presenttion *"The ultimate Authentication Brute-Force detection using super stats"* delivered on May 4th. Slides and Recording are available below:
 
-`<AVAILABLE SOON>`
+* [Slides](https://github.com/bsidessplunk/2021/blob/main/The%20ultimate%20Authentication%20Brute-Force%20detection%20using%20super%20stats/The%20ultimate%20Authentication%20Brute-Force%20detection%20using%20super%20stats.pdf)
+* [Recording](https://www.youtube.com/watch?v=mVyRL1zSFDQ)
 
 ## Changelog
 What has changed since the presentation/recording time, after getting feedback and applying some devel improvements?
