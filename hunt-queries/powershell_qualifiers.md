@@ -7,7 +7,7 @@ The idea is to quickly share some real-life SPL with the Splunk Detection Engine
 
 ## A few notes
 
-- Some checks rely on long regex strings aiming to detection a wide range of activities, you may want to split those into smaller subsets for your environment for easier maintenance and fine-grained scoring.
+- Some checks rely on long regex strings aiming to detect a wide range of activities, you may want to split those into smaller subsets for your environment for easier maintenance and fine-grained scoring.
 - While some of those checks indicate very suspicious activity, relying on atomic indicators is by far what contributes towards high alert volume  and low signal-to-noise.
 - Of course, depending on how PowerShell is used within an environment, those may require some initial exception handling/baseline analysis until the noise is reduced to a manageable amount.
 - The single score related to each qualifier must be fine-tuned for each environment. You can extract and calculate scores later via [eval's mvfilter()](https://docs.splunk.com/Documentation/Splunk/8.2.0/SearchReference/MultivalueEvalFunctions#mvfilter.28X.29) and [eventstats](https://docs.splunk.com/Documentation/Splunk/8.2.0/SearchReference/Eventstats) sum() and median().
