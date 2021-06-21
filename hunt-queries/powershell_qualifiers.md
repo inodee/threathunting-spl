@@ -88,8 +88,6 @@ For creating the baseline, no fancy machine learning needed, simply stack counti
 
 # References
 
-  - https://github.com/fuzz-security/Active-Directory-Exploitation-Cheat-Sheet
-
   - https://github.com/samratashok/nishang
 
   - https://github.com/secprentice/PowerShellWatchlist/blob/master/badshell.txt
