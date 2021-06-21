@@ -24,7 +24,6 @@ Basically, scores higher than 5 are considered strong indicators (highlighted in
 | eval _comment="Some sanitization"
 | eval ps_command=replace(ps_command, "[\r\n]", "")
 | eval ps_command=replace(ps_command, "\S+\\\(pwsh|sqlps|sqltoolsps|powershell)\.exe|^(pwsh|sqlps|sqltoolsps|powershell)(\.exe)*", "")
-
  
 | eval obf_symbol=ps_command
 | makemv tokenizer="(['@%^,;:=&+\"\(\{\)\}`!\*\./\?_\[\]\|<>~$])" obf_symbol
