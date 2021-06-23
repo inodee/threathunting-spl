@@ -96,7 +96,7 @@ For creating the baseline, no fancy machine learning needed, simply stack counti
 
 ![image](https://user-images.githubusercontent.com/14159692/123107067-7cfb4b00-d439-11eb-89e2-701d320819f9.png)
 
-Here's a quick SPL to generate PowerShell one-liners as example. They are particularly useful to validade the obfuscation detection method. They are mainly coming from [here](https://www.helloitsliam.com/2018/03/21/obfuscating-powershell-commands/).
+Here's a quick SPL to generate PowerShell one-liners as example. Those are particularly useful to validade the obfuscation detection method. They are mainly coming from an article wrote by  Liam Cleary [here](https://www.helloitsliam.com/2018/03/21/obfuscating-powershell-commands/).
 
 ```
 | makeresults
