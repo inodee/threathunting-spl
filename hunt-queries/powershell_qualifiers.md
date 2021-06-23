@@ -73,7 +73,7 @@ Basically, scores higher than 5 are considered strong indicators (highlighted in
 
 | eval qualifier="PS: Potential Downgrade Attack", qualifiers=if(match(ps_command, "(?i)([-]ve*r*s*i*o*n*\s+2)"), mvappend(qualifiers, "[".session_label."] ".qualifier." # score: 6", cmdlines." (".qualifier.")"), qualifiers)
 
-| eval qualifier="PS: Suspicious [char] usage", qualifiers=if(match(ps_command, "(?i)(convert|byte|length|xor|substring|join|toint|tostr)*\[char\](convert|byte|length|xor|substring|join|toint|tostr)*"), mvappend(qualifiers, "[".session_label."] ".qualifier." # score: 6", cmdlines." (".qualifier.")"), qualifiers)
+| eval qualifier="PS: Suspicious [char] usage", qualifiers=if(match(ps_command, "(?i)(convert|byte|length|xor|substring|join|toint|tostr)*.*\[char.*(convert|byte|length|xor|substring|join|toint|tostr)*"), mvappend(qualifiers, "[".session_label."] ".qualifier." # score: 6", cmdlines." (".qualifier.")"), qualifiers)
 
 | eval qualifier="PS: Service Manipulation", qualifiers=if(match(ps_command, "(?i)(new|set)-service"), mvappend(qualifiers, "[".session_label."] ".qualifier." # score: 8", cmdlines." (".qualifier.")"), qualifiers)
 
