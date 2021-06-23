@@ -51,7 +51,7 @@ Basically, scores higher than 5 are considered strong indicators (highlighted in
 
 | eval qualifier="PS: Download reference", qualifiers=if(match(ps_command, "(?i)[^\\\]download") AND !match(ps_command, "(?i)".ps_command_exception_regex) AND !match(ParentPath, "(?i)".ps_parent_exception_regex), mvappend(qualifiers, "[".session_label."] ".qualifier." # score: 6", cmdlines." (".qualifier.")"), qualifiers)
 
-| eval qualifier="PS: Script reference", qualifiers=if(match(ps_command, "(?i)\.(vbs)|wscript|javascript") AND !match(ParentPath, "(?i)".ps_parent_exception_regex), mvappend(qualifiers, "[".session_label."] ".qualifier." # score: 6", cmdlines." (".qualifier.")"), qualifiers)
+| eval qualifier="PS: Potential Script reference", qualifiers=if(match(ps_command, "(?i)\.(vbs)|[cw]script|javascript") AND !match(ParentPath, "(?i)".ps_parent_exception_regex), mvappend(qualifiers, "[".session_label."] ".qualifier." # score: 6", cmdlines." (".qualifier.")"), qualifiers)
 
 | eval qualifier="PS: WMI usage", qualifiers=if(match(ps_command, "(?i)(wmiobject|WMIMethod|RemoteWMI|PowerShellWmi|wmicommand)") AND !match(ParentPath, "(?i)".ps_parent_exception_regex), mvappend(qualifiers, "[".session_label."] ".qualifier." # score: 6", cmdlines." (".qualifier.")"), qualifiers)
 
