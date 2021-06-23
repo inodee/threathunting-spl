@@ -170,8 +170,8 @@ Add-Type -TypeDefinition $u9558a2;
 [y3c69]::l686b3();" ]
 | append [ | makeresults | eval src="compromised7", command="${()}=+  $();${;}=${()}  ;  ${*%}=++${()}  ;  ${[}=  ++${()}  ;${-~}  =++  ${()}  ;${ (+}  =++  ${()}  ;  ${ '/}=++${()}  ;  ${%(#}  =  ++${()}  ;${'/=}  =  ++${()}  ;  ${#}  =  ++${()}  ;${]}  =++  ${()};${~%}  =  \"[\"  +\"$(@{})\"[  ${'/=}  ]+  \"$(@{})\"[  \"${*%}${]}\"  ]+  \"$(@{  }  )  \"[\"${[}${;}\"  ]+  \"$?  \"[${*%}  ]  +  \"]\"  ;  ${()}  =  \"\".(\"$(@{  }  )\"[\"${*%}\"+\"${ (+}\"]  +\"$(  @{  }  )  \"[  \"${*%}\"+\"${%(#}\"]+  \"$(  @{}  )\"[${;}]  +  \"$(  @{  })\"[  ${ (+}  ]+  \"$?\"[  ${*%}]  +\"$(@{  })\"[  ${-~}]  )  ;${()}  =\"$(  @{  }  )\"[  \"${*%}\"+\"${ (+}\"  ]+\"$(@{}  )  \"[${ (+}]  +\"${()}\"[\"${[}\"+\"${'/=}\"];  &  ${()}(\"${()}  (${~%}${#}${'/=}  +  ${~%}${*%}${*%}${ (+}  +${~%}${*%}${;}${ '/}  +${~%}${*%}${*%}${%(#}+${~%}${*%}${;}${*%}  +${~%}${ (+}${ '/}  +  ${~%}${'/=}${[}+${~%}${*%}${*%}${*%}+${~%}${*%}${*%}${ '/}+  ${~%}${*%}${*%}${%(#}  +${~%}${-~}${[}  +${~%}${-~}${ (+}+  ${~%}${]}${#}  +  ${~%}${]}${'/=}  +${~%}${*%}${*%}${%(#}+${~%}${*%}${*%}${'/=}+  ${~%}${*%}${;}${ (+}+${~%}${]}${'/=}+  ${~%}${*%}${*%}${;}  +${~%}${-~}${ (+})\"  )    " ]
 | table src command
-| rename command AS ps_payload
-| eval ps_payload="C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe ".ps_payload
+| rename command AS ps_command
+| eval ps_command="C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe ".ps_command
 ```
 You can also add an [outputlookup](https://docs.splunk.com/Documentation/Splunk/8.2.0/SearchReference/Outputlookup) to the end and save the demo events to a CSV file for later loading via [inputlookup](https://docs.splunk.com/Documentation/Splunk/8.2.0/SearchReference/Inputlookup) and validate the detections/scoring system.
 
