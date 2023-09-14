@@ -17,5 +17,5 @@ This should not be a recurrent query at all, but used for initial detection surf
 | append [ | tstats count where index=any TERM(botnet) by index, sourcetype, _time span=1d | eval matches="botnet" ]
 | append [ | tstats count where index=any TERM(risk) by index, sourcetype, _time span=1d | eval matches="risk" ]
 
-| stats sparkline, sum(count) AS event_count, values(matches) AS macthes by index, sourcetype
+| stats sparkline, sum(count) AS event_count, values(matches) AS matches by index, sourcetype
 ```
